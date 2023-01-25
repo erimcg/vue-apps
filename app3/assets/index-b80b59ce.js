@@ -2166,40 +2166,7 @@ function invokeDirectiveHook(vnode, prevVNode, instance, name) {
     }
   }
 }
-const COMPONENTS = "components";
-function resolveComponent(name, maybeSelfReference) {
-  return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
-}
 const NULL_DYNAMIC_COMPONENT = Symbol();
-function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
-  const instance = currentRenderingInstance || currentInstance;
-  if (instance) {
-    const Component = instance.type;
-    if (type === COMPONENTS) {
-      const selfName = getComponentName(
-        Component,
-        false
-        /* do not include inferred name to avoid breaking existing code */
-      );
-      if (selfName && (selfName === name || selfName === camelize(name) || selfName === capitalize(camelize(name)))) {
-        return Component;
-      }
-    }
-    const res = (
-      // local registration
-      // check instance[type] first which is resolved for options API
-      resolve(instance[type] || Component[type], name) || // global registration
-      resolve(instance.appContext[type], name)
-    );
-    if (!res && maybeSelfReference) {
-      return Component;
-    }
-    return res;
-  }
-}
-function resolve(registry, name) {
-  return registry && (registry[name] || registry[camelize(name)] || registry[capitalize(camelize(name))]);
-}
 const getPublicInstance = (i) => {
   if (!i)
     return null;
@@ -4607,9 +4574,6 @@ function getExposeProxy(instance) {
     }));
   }
 }
-function getComponentName(Component, includeInferred = true) {
-  return isFunction(Component) ? Component.displayName || Component.name : Component.name || includeInferred && Component.__name;
-}
 function isClassComponent(value) {
   return isFunction(value) && "__vccOpts" in value;
 }
@@ -5015,19 +4979,17 @@ const _hoisted_5 = [
   _hoisted_3,
   _hoisted_4
 ];
-function _sfc_render$1(_ctx, _cache) {
+function _sfc_render(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1, _hoisted_5);
 }
-const Logo = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const Logo = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
 const _sfc_main = {
-  components: {
-    Logo
+  __name: "App",
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(Logo);
+    };
   }
 };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_Logo = resolveComponent("Logo");
-  return openBlock(), createBlock(_component_Logo);
-}
-const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 const main = "";
-createApp(App).mount("#app");
+createApp(_sfc_main).mount("#app");
