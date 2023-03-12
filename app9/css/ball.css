@@ -1,30 +1,8 @@
 .floor {
-    position: absolute;
     height: 1px;
 }
 
-.tiny-ball {
-    position: absolute;
-
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-
-    background-color:  orangered;
-}
-
-.tiny-box {
-    position: absolute;
-
-    width: 20px;
-    height: 20px;
-
-    background-color: orangered;
-}
-
 .ball {
-    position: absolute;
-
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -35,33 +13,55 @@
 }
 
 .box {
-    position: absolute;
+    width: 40px;
+    height: 40px;
+}
 
+.grey-box {
+    width: 40px;
+    height: 40px;
+    
+    background-color: rgb(138, 153, 181);
+}
+
+.border-box {
     width: 40px;
     height: 40px;
 
     outline: solid 1px #a2a2fb;
 }
 
-.triangle {
-    position: absolute;
+.tiny-ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
 
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-   
-    background: linear-gradient(to bottom right, #fff 0%, #fff 50%, green 50%, green 100%);
-    animation: triangleAnimation 2s ease-in 0s infinite alternate;
+    background-color: orangered;
 }
 
-@keyframes triangleAnimation {
+.triangle {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+
+    background-color: green;
+    background: linear-gradient(to bottom right, #fff 0%, #fff 50%, green 50%, green 100%);
+    animation: sizeBorderRadiusAnimation 3s ease-in 0s infinite alternate;
+}
+
+@keyframes sizeBorderRadiusAnimation {
     from {
         background-size: 0%;
-        /*transform: rotateY(0deg);*/
         border-radius: 40px;
     }
 
-    50% {
+    20% {
+        background-size: 0%;
+        border-radius: 40px;
+    }
+
+    80% {
+        background-size: 100%;
         border-radius: 0px;
     }
 
@@ -71,20 +71,19 @@
     }
 }
 
-.mesh-ball {
-    position: absolute;
+.mesh {
+    width: 50px;
+    height: 50px;
 
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
+    border-radius: 25px;
 
     background-image: url(/images/mesh.webp);
     background-size: cover;
 
-    animation: meshAnimation 3s ease-in 0s infinite alternate both;
+    animation: sizeRotateAnimation 3s ease-in 0s infinite alternate both;
 }
 
-@keyframes meshAnimation {
+@keyframes sizeRotateAnimation {
     from {
         background-size: 0%;
         transform: rotateY(0deg);
