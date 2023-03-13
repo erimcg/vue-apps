@@ -21,7 +21,7 @@
     width: 40px;
     height: 40px;
     
-    background-color: rgb(138, 153, 181);
+    background-color: rgb(184, 186, 191);
 }
 
 .border-box {
@@ -40,8 +40,8 @@
 }
 
 .triangle {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     border-radius: 25px;
 
     background-color: green;
