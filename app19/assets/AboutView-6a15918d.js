@@ -1,0 +1,1 @@
+import{o as t,c as n,a as o,b as e,t as s,F as r,_ as l}from"./index-a68b90b3.js";const m={__name:"AboutView",setup(c){return(a,u)=>(t(),n(r,null,[o(l,{label:"About"}),e("main",null,[e("h3",null,s(a.$route.name),1)])],64))}};export{m as default};
